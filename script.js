@@ -69,14 +69,13 @@ const DIALOG = [
 ];
 const WHO = { F: "Pani Petersen", T: "Tomek", N: "Narrator" };
 
-// Przed i po: [sytuacja, przed, po]
-const BEFORE_AFTER = [
-  ["Na bramie magazynu", "Podajesz papiery przez okno i liczysz, że ktoś się domyśli, po co przyjechałeś.", "Mówisz: <q>Abholung. Ich lade für die Spedition Huber.</q> i wiesz, co odpowiedzieć na pytanie o numer rejestracyjny."],
-  ["U klienta na rampie", "Stoisz z wózkiem i czekasz, aż ktoś pokaże ręką, gdzie postawić palety.", "Pytasz: <q>Wo soll ich die Paletten hinstellen?</q> i rozumiesz odpowiedź."],
-  ["Przy zepsutym towarze", "Podpisujesz dokument, którego nie rozumiesz, bo wszyscy się spieszą.", "Wiesz, że szkodę wpisuje się na dokument dostawy, zanim złożysz podpis."],
-  ["Telefon od dyspozytora", "Nie odbierasz albo odpowiadasz „ja, ja”, chociaż nic nie rozumiesz.", "Mówisz spokojnie, że stoisz w korku i o ile się spóźnisz. A jak nie słyszysz – prosisz o powtórzenie."],
-  ["Kontrola policji", "Stres, bo nie wiesz, o co pytają i jakie dokumenty podać.", "Rozumiesz: <q>Führerschein und Fahrzeugpapiere, bitte.</q> i wiesz, co wyjąć z teczki."],
-  ["Pasek wypłaty", "Brutto, netto, Spesen – nie wiesz, co jest czym i czy wszystko się zgadza.", "Rozumiesz pasek i umiesz grzecznie zapytać w biurze o korektę."],
+// Znasz to? [problem bez PDF-a, rozwiązanie z PDF-em]
+const PROBLEMS = [
+  ["Mówią za szybko. Łapiesz pojedyncze słowa i tylko kiwasz głową.", "Znasz te rozmowy z dialogów. Rozumiesz, o co chodzi."],
+  ["Boisz się odebrać telefon od dyspozytora.", "Wiesz, jak zacząć, i umiesz poprosić o powtórzenie."],
+  ["Podpisujesz papiery, których nie rozumiesz.", "Wiesz, co sprawdzić i co dopisać, zanim podpiszesz."],
+  ["Przy kontroli albo wypadku stres blokuje ci język.", "Masz to przećwiczone: policja, 110, 112."],
+  ["Słówka z aplikacji? W pracy nikt tak nie mówi.", "Uczysz się języka z prawdziwej pracy w Niemczech."],
 ];
 
 /* =========================================================
@@ -135,12 +134,11 @@ function buildDialog() {
 
 function buildBeforeAfter() {
   const box = $("[data-ba]");
-  box.innerHTML = BEFORE_AFTER.map(([s, before, after]) => `
+  box.innerHTML = PROBLEMS.map(([bad, good]) => `
     <li class="prism">
-      <span class="prism-sit">${s}</span>
-      <button class="prism-box" type="button" aria-label="${s}: obróć tablicę">
-        <span class="prism-face face-before"><span class="tag">Przed</span><span>${before}</span></span>
-        <span class="prism-face face-after"><span class="tag">Po</span><span>${after}</span></span>
+      <button class="prism-box" type="button" aria-label="Obróć tablicę">
+        <span class="prism-face face-before"><span class="tag">Bez PDF-a</span><span>${bad}</span></span>
+        <span class="prism-face face-after"><span class="tag">Z PDF-em</span><span>${good}</span></span>
       </button>
     </li>`).join("");
   // Dotknięcie odwraca tablicę wbrew przewijaniu
@@ -160,8 +158,8 @@ function updatePrisms() {
   const vh = window.innerHeight;
   $$(".prism-box", box).forEach((b) => {
     const r = b.getBoundingClientRect();
-    // obrót, gdy tablica mija środek ekranu (od 70% do 45% wysokości)
-    let f = reduceMotion ? 1 : clamp((vh * .72 - r.top) / (vh * .25));
+    // obrót, gdy tablica przejeżdża z połowy ekranu w górę (od 50% do 30% wysokości)
+    let f = reduceMotion ? 1 : clamp((vh * .5 - r.top) / (vh * .2));
     if (b.dataset.flip === "1") f = 1 - Math.round(f);
     b.style.setProperty("--f", f.toFixed(3));
   });
@@ -176,7 +174,6 @@ const tracked = $$("[data-scroll]");
 const truck = $("[data-progress-truck]");
 const sticky = $("[data-sticky-buy]");
 let ticking = false;
-let scrollTimer;
 
 function update() {
   ticking = false;
@@ -195,7 +192,7 @@ function update() {
       if (r.bottom < -200) el.style.setProperty("--e", 1);
       continue;
     }
-    const e = reduceMotion ? 1 : clamp((vh - r.top) / (vh * .8));
+    const e = reduceMotion ? 1 : clamp((vh - r.top) / (vh * .55));
     const p = clamp((vh - r.top) / (vh + r.height));
     el.style.setProperty("--e", e.toFixed(4));
     el.style.setProperty("--p", p.toFixed(4));
@@ -214,9 +211,6 @@ function update() {
   sticky.classList.toggle("show", show);
 }
 function onScroll() {
-  document.body.classList.add("is-scrolling");
-  clearTimeout(scrollTimer);
-  scrollTimer = setTimeout(() => document.body.classList.remove("is-scrolling"), 120);
   if (!ticking) { ticking = true; requestAnimationFrame(update); }
 }
 
@@ -445,7 +439,6 @@ function setupLinks() {
 }
 
 document.documentElement.classList.add("js");
-document.body.classList.add("is-loading");
 buildTopics();
 buildDialog();
 buildBeforeAfter();
@@ -458,5 +451,3 @@ counters();
 update();
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", () => requestAnimationFrame(update));
-// Wjazd tablicy przy załadowaniu strony
-requestAnimationFrame(() => setTimeout(() => document.body.classList.remove("is-loading"), 120));
