@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poradź sobie z niemieckim, przewoźniku! – dialogi PL/DE dla kierowców</title>
+<meta name="description" content="Niemiecki dla przewoźników: 52 dialogi po polsku i po niemiecku z prawdziwej pracy w Niemczech i Austrii, słowniczki, 50 pytań i odpowiedzi. PDF do czytania na telefonie albo do druku.">
+<meta property="og:title" content="Poradź sobie z niemieckim, przewoźniku!">
+<meta property="og:description" content="52 dialogi PL/DE z pracy kierowcy w Niemczech i Austrii. Pakiet pełny 150 zł zamiast 299 zł.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Pasek górny: logo, droga postępu z ciężarówką, koszyk -->
+<nav class="topbar" aria-label="Nawigacja">
+  <a class="brand" href="#start" aria-label="Na górę strony">
+    <span class="brand-sign">DE</span>
+    <span class="brand-text">Niemiecki dla przewoźników</span>
+  </a>
+  <div class="topbar-actions">
+    <a class="topbar-link" href="#cennik">Cennik</a>
+    <button class="cart-btn" type="button" data-open-cart aria-label="Otwórz koszyk">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L21 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.6" fill="currentColor"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/></svg>
+      <span class="cart-count" data-cart-count>0</span>
+    </button>
+  </div>
+  <div class="progress-road" aria-hidden="true">
+    <div class="progress-truck" data-progress-truck>
+      <svg viewBox="0 0 64 22"><rect x="0" y="2" width="40" height="14" rx="1.5" fill="#F7F8F6"/><rect x="0" y="2" width="40" height="3" fill="#00539F"/><path d="M42 5h10l6 6v5H42z" fill="#F5B700"/><rect x="47" y="7" width="6" height="4" rx="1" fill="#2B3036"/><circle cx="8" cy="18" r="3" fill="#2B3036"/><circle cx="16" cy="18" r="3" fill="#2B3036"/><circle cx="50" cy="18" r="3" fill="#2B3036"/></svg>
+    </div>
+  </div>
+</nav>
+
+<main id="start">
+
+<!-- ===================== HERO: przejazd pod tablicą ===================== -->
+<header class="hero" data-hero>
+  <div class="hero-stage">
+    <div class="sky"></div>
+    <svg class="layer hills hills-far" viewBox="0 0 1600 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0 220 C180 120 320 160 470 110 C640 50 760 150 930 100 C1110 45 1260 140 1400 90 C1500 60 1560 90 1600 80 V300 H0Z" fill="#9DB7CF"/></svg>
+    <svg class="layer hills hills-near" viewBox="0 0 1600 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0 250 C220 170 380 230 560 180 C760 120 900 220 1080 170 C1260 120 1420 200 1600 150 V300 H0Z" fill="#5E8467"/><path d="M0 280 C300 240 520 270 800 250 C1080 230 1300 265 1600 240 V300 H0Z" fill="#46684F"/></svg>
+
+    <div class="road-wrap" aria-hidden="true">
+      <div class="road">
+        <div class="lane lane-1"></div>
+        <div class="lane lane-2"></div>
+      </div>
+      <div class="guard guard-l"></div>
+      <div class="guard guard-r"></div>
+    </div>
+
+    <div class="gantry">
+      <div class="gantry-beam" aria-hidden="true"></div>
+      <div class="gantry-post gantry-post-l" aria-hidden="true"></div>
+      <div class="gantry-post gantry-post-r" aria-hidden="true"></div>
+      <div class="signs">
+        <div class="sign sign-main">
+          <h1>Poradź sobie z&nbsp;niemieckim, przewoźniku!</h1>
+          <p class="sign-sub">Zacznij mówić po niemiecku z&nbsp;łatwością – na bramie, w&nbsp;magazynie, u&nbsp;klienta i&nbsp;przez telefon.</p>
+        </div>
+        <div class="sign sign-side" aria-hidden="true">
+          <span class="sign-arrow">
+            <svg viewBox="0 0 40 40"><path d="M20 34V8M20 8l-10 10M20 8l10 10" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="sign-dest">Deutschland<br>Österreich</span>
+          <span class="sign-pair"><b>PL</b><i>⇄</i><b>DE</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-copy">
+      <p class="hero-lead">Dla kierowców ciężarówek, busów i&nbsp;dostawczaków. 52 dialogi z&nbsp;prawdziwej pracy w&nbsp;Niemczech i&nbsp;Austrii – zdanie po polsku, obok to samo po niemiecku.</p>
+      <div class="hero-cta">
+        <a class="btn btn-yellow" href="#cennik">Biorę to – 150 zł</a>
+        <a class="btn btn-ghost" href="#film">Zobacz, co jest w środku</a>
+      </div>
+      <p class="hero-price-note"><s>299 zł</s> teraz 150 zł za pakiet pełny</p>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </div>
+</header>
+
+<!-- ===================== FILM ===================== -->
+<section class="section film" id="film" data-scroll>
+  <div class="film-head">
+    <h2 class="slide-up">Zobacz, jak wygląda ten PDF</h2>
+    <p class="slide-up">Krótki film: co jest w środku i jak z tego korzystać w kabinie.</p>
+  </div>
+  <div class="player-wrap">
+    <div class="player" data-player>
+      <div class="player-placeholder" data-player-placeholder>
+        <img src="assets/strony/strona-1.jpg" alt="" class="player-bg">
+        <button class="play" type="button" data-play aria-label="Odtwórz film">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 10l16 10-16 10z" fill="currentColor"/></svg>
+        </button>
+        <p class="player-note" data-player-note hidden>Film pojawi się tu wkrótce.</p>
+      </div>
+    </div>
+    <div class="player-shadow" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ===================== CO DOSTAJESZ ===================== -->
+<section class="section get" id="co-dostajesz" data-scroll>
+  <div class="get-intro">
+    <h2 class="slide-l">Gdy kupisz, dostaniesz…</h2>
+    <p class="slide-l lag-1">Jeden plik PDF, który możesz mieć zawsze przy sobie: w telefonie, na tablecie albo wydrukowany w teczce w kabinie.</p>
+  </div>
+
+  <!-- Tablica odległości: liczby -->
+  <div class="distance-sign slide-r" data-counters>
+    <div class="ds-row"><span>Tematy z pracy przewoźnika</span><b data-count="13">0</b></div>
+    <div class="ds-row"><span>Dialogi po polsku i po niemiecku</span><b data-count="52">0</b></div>
+    <div class="ds-row"><span>Słówka w słowniczkach</span><b data-count="923">0</b></div>
+    <div class="ds-row"><span>Pytania i odpowiedzi z pracy</span><b data-count="50">0</b></div>
+    <div class="ds-row"><span>Zdania na rozmowę o pracę</span><b data-count="60">0</b></div>
+    <div class="ds-row"><span>Stron w pliku PDF</span><b data-count="235">0</b></div>
+  </div>
+</section>
+
+<section class="section features" data-scroll>
+  <div class="feature-grid">
+    <article class="feature f-a">
+      <h3>Każda sytuacja na cztery sposoby</h3>
+      <p>Ta sama historia jest najpierw łatwa, potem trudniejsza. Raz dzieje się teraz, raz opowiadasz ją później koledze albo szefowi. Tak uczysz się mówić w czasie teraźniejszym i przeszłym.</p>
+      <div class="matrix" aria-label="Cztery wersje każdego tematu">
+        <span class="m-h"></span><span class="m-h">Teraz</span><span class="m-h">Później</span>
+        <span class="m-h">Łatwo</span><span class="m-c">A – teraz</span><span class="m-c">A – po fakcie</span>
+        <span class="m-h">Trudniej</span><span class="m-c m-b">B – teraz</span><span class="m-c m-b">B – po fakcie</span>
+      </div>
+    </article>
+    <article class="feature f-b">
+      <h3>Polski i niemiecki obok siebie</h3>
+      <p>Każdy akapit ma swoją parę: po lewej po polsku, po prawej po niemiecku. Nie musisz niczego szukać w słowniku – od razu widzisz, co znaczy każde zdanie.</p>
+      <div class="pair-demo" aria-hidden="true">
+        <span class="pd-pl">Mam dostawę od Brandta: nabiał, dwanaście palet.</span>
+        <span class="pd-de">Ich habe eine Lieferung von Brandt: Molkereiprodukte, zwölf Paletten.</span>
+      </div>
+    </article>
+    <article class="feature f-c">
+      <h3>Słowniczek po każdym temacie</h3>
+      <p>Rzeczowniki z rodzajnikiem i liczbą mnogą, czasowniki i gotowe zwroty – w kolejności, w jakiej padają w dialogach.</p>
+      <ul class="mini-gloss" aria-hidden="true">
+        <li><b>der Lieferschein</b><span>dowód dostawy</span></li>
+        <li><b>die Rampe</b><span>rampa</span></li>
+        <li><b>das Warndreieck</b><span>trójkąt ostrzegawczy</span></li>
+      </ul>
+    </article>
+    <article class="feature f-d">
+      <h3>„Zapamiętaj” na koniec dialogu</h3>
+      <p>Każda wersja kończy się jedną praktyczną wskazówką – po polsku i po niemiecku. Takie rzeczy, których nikt ci nie powie pierwszego dnia.</p>
+      <blockquote class="merke">Jeśli czegoś nie rozumiesz, po prostu zapytaj: <b>„Können Sie das bitte wiederholen?”</b></blockquote>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== 13 TEMATÓW ===================== -->
+<section class="section topics" id="tematy" data-scroll>
+  <div class="topics-head">
+    <h2 class="slide-l">13 tematów, które spotkasz w pracy</h2>
+    <p class="slide-l lag-1">Tomek, kierowca z Wrocławia, zaczyna pracę w niemieckiej firmie spedycyjnej. Przechodzisz z nim przez wszystko – od rozmowy o pracę po wypadek na autostradzie. Kliknij temat, żeby zobaczyć, czego się nauczysz.</p>
+  </div>
+  <ol class="topic-list" data-topics></ol>
+  <p class="topics-foot slide-up">Historie dzieją się w pracy kierowcy ciężarówki. Brama, magazyn, klient, dyspozytor, policja i pasek wypłaty wyglądają tak samo, gdy jeździsz busem albo dostawczakiem.</p>
+</section>
+
+<!-- ===================== BONUSY ===================== -->
+<section class="section bonus" id="bonusy" data-scroll>
+  <h2 class="slide-r">Do tego bonusy na start</h2>
+  <p class="bonus-lead slide-r lag-1">Zanim zaczniesz dialogi, poznaj podstawy. Ta część jest też osobno w pakiecie podstawowym.</p>
+  <div class="bonus-rail">
+    <article class="bonus-card"><h3>Filmy z gramatyką</h3><p>7 krótkich filmów do kliknięcia: odmiana czasowników, czas przeszły, czasowniki modalne. Przy każdym zdanie z naszych dialogów.</p></article>
+    <article class="bonus-card"><h3>Kiedy? Okoliczniki czasu</h3><p>„Godzinę temu”, „za pół godziny”, „na jutro”, dni tygodnia, miesiące i daty – z przykładami z pracy kierowcy.</p></article>
+    <article class="bonus-card"><h3>Gdzie? Dokąd?</h3><p>Kiedy mówi się <i>nach</i>, <i>zu</i>, <i>bei</i>, <i>in</i>, <i>auf</i>. Koniec z „do” i „na” na chybił trafił.</p></article>
+    <article class="bonus-card"><h3>50 pytań i odpowiedzi</h3><p>Brama, załadunek, klient, dyspozytor, kontrola drogowa, stacja, firma – pytanie po niemiecku i gotowa krótka odpowiedź.</p></article>
+    <article class="bonus-card"><h3>Rozmowa o pracę</h3><p>60 zdań na trzech poziomach: łatwy, średni, trudny. Słowa z rodzajnikiem i pełne zdania.</p></article>
+    <article class="bonus-card"><h3>30 najczęstszych słów</h3><p>Słowa, które kierowca słyszy codziennie – każde w pełnym zdaniu po niemiecku i po polsku.</p></article>
+  </div>
+</section>
+
+<!-- ===================== ZAJRZYJ DO ŚRODKA ===================== -->
+<section class="section peek" id="srodek" data-scroll>
+  <div class="peek-head">
+    <h2 class="slide-up">Zajrzyj do środka</h2>
+    <p class="slide-up lag-1">Tak naprawdę wyglądają strony w pliku. Kliknij stronę, żeby ją powiększyć.</p>
+  </div>
+  <div class="page-stack" data-pages>
+    <button class="page" type="button" style="--i:0" data-src="assets/strony/strona-1.jpg" aria-label="Powiększ: Temat 1, rozmowa kwalifikacyjna"><img src="assets/strony/strona-1.jpg" alt="Strona z dialogiem: Temat 1, rozmowa kwalifikacyjna" loading="lazy"></button>
+    <button class="page" type="button" style="--i:1" data-src="assets/strony/strona-5.jpg" aria-label="Powiększ: 50 pytań i odpowiedzi"><img src="assets/strony/strona-5.jpg" alt="Strona z bonusu: 50 pytań i odpowiedzi" loading="lazy"></button>
+    <button class="page" type="button" style="--i:2" data-src="assets/strony/strona-3.jpg" aria-label="Powiększ: dialog z policjantem po wypadku"><img src="assets/strony/strona-3.jpg" alt="Strona z dialogiem: rozmowa z policjantem po wypadku" loading="lazy"></button>
+    <button class="page" type="button" style="--i:3" data-src="assets/strony/strona-4.jpg" aria-label="Powiększ: słowniczek"><img src="assets/strony/strona-4.jpg" alt="Strona ze słowniczkiem do tematu 1" loading="lazy"></button>
+    <button class="page" type="button" style="--i:4" data-src="assets/strony/strona-6.jpg" aria-label="Powiększ: okoliczniki czasu"><img src="assets/strony/strona-6.jpg" alt="Strona z bonusu: okoliczniki czasu" loading="lazy"></button>
+  </div>
+</section>
+
+<!-- ===================== SPRÓBUJ: dialog z odwracaniem ===================== -->
+<section class="section try" id="sprobuj" data-scroll>
+  <div class="try-head">
+    <h2 class="slide-l">Spróbuj sam: dostawa do supermarketu</h2>
+    <p class="slide-l lag-1">Fragment z tematu 3. Przeczytaj zdanie po niemiecku i spróbuj zrozumieć. Potem dotknij go – odwróci się na polski.</p>
+    <div class="try-toggle slide-l lag-2" role="group" aria-label="Język wszystkich zdań">
+      <button type="button" class="is-on" data-lang="de">Wszystko po niemiecku</button>
+      <button type="button" data-lang="pl">Wszystko po polsku</button>
+    </div>
+  </div>
+  <div class="dialog" data-dialog></div>
+</section>
+
+<!-- ===================== PRZED I PO ===================== -->
+<section class="section ba" id="przed-po" data-scroll>
+  <div class="ba-head">
+    <h2 class="slide-r">Przed i po</h2>
+    <p class="slide-r lag-1">Przewijaj dalej, a tablice obrócą się z „przed” na „po”. Dotknij tablicy, żeby obrócić ją z powrotem.</p>
+  </div>
+  <ul class="prisms" data-ba></ul>
+</section>
+
+<!-- ===================== CENNIK ===================== -->
+<section class="section pricing" id="cennik" data-scroll>
+  <div class="pricing-head">
+    <h2 class="slide-up">Wybierz swój pakiet</h2>
+    <p class="slide-up lag-1">Płacisz raz. Plik zostaje u ciebie.</p>
+  </div>
+
+  <div class="plans">
+    <article class="plan plan-basic slide-l" data-plan="basic">
+      <div class="cover cover-basic" data-cover="basic" aria-hidden="true">
+        <span class="cover-sign">DE</span>
+        <span class="cover-title">Bonusy na start</span>
+        <span class="cover-sub">PDF · ok. 20 stron</span>
+      </div>
+      <h3>Pakiet podstawowy</h3>
+      <p class="plan-for">Dla tych, którzy chcą najpierw poznać podstawy.</p>
+      <div class="price"><span class="price-now">49 zł</span></div>
+      <ul class="plan-list">
+        <li>7 filmów z gramatyką z przykładami</li>
+        <li>Okoliczniki czasu: kiedy, za ile, ile temu</li>
+        <li>Okoliczniki miejsca: nach, zu, bei, in, auf</li>
+        <li>50 pytań i odpowiedzi z pracy kierowcy</li>
+        <li>60 zdań na rozmowę o pracę</li>
+        <li>30 najczęstszych słów w pełnych zdaniach</li>
+      </ul>
+      <button class="btn btn-blue btn-wide" type="button" data-add="basic">Biorę to</button>
+    </article>
+
+    <article class="plan plan-full slide-r" data-plan="full">
+      <div class="hazard-ribbon" aria-hidden="true"><span>−50%</span></div>
+      <div class="cover cover-full" data-cover="full" aria-hidden="true">
+        <span class="cover-sign">DE</span>
+        <span class="cover-title">Teksty i dialogi PL / DE</span>
+        <span class="cover-sub">PDF · 235 stron</span>
+      </div>
+      <h3>Pakiet pełny z dialogami</h3>
+      <p class="plan-for">Wszystko, czego potrzebujesz, żeby zacząć mówić w pracy.</p>
+      <div class="price">
+        <s class="price-old">299 zł</s>
+        <span class="price-now">150 zł</span>
+        <span class="price-save">oszczędzasz 149 zł</span>
+      </div>
+      <ul class="plan-list">
+        <li><b>Wszystko z pakietu podstawowego</b></li>
+        <li>13 tematów z prawdziwej pracy przewoźnika</li>
+        <li>52 dialogi: łatwe i trudniejsze, teraz i w czasie przeszłym</li>
+        <li>Polski i niemiecki obok siebie, akapit przy akapicie</li>
+        <li>923 słówka w słowniczkach z rodzajnikiem i liczbą mnogą</li>
+        <li>Wskazówka „Zapamiętaj” po każdym dialogu</li>
+        <li>Spis treści z numerami stron</li>
+      </ul>
+      <button class="btn btn-yellow btn-wide btn-big" type="button" data-add="full">Biorę to</button>
+    </article>
+  </div>
+  <p class="pricing-foot">Pakiet pełny zawiera cały pakiet podstawowy. Nie musisz kupować obu.</p>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section faq" id="pytania" data-scroll>
+  <h2 class="slide-up">Pytania przed zakupem</h2>
+  <div class="faq-list">
+    <details>
+      <summary>Czy muszę już znać niemiecki?</summary>
+      <p>Nie. Obok każdego zdania po niemiecku jest to samo zdanie po polsku. Wersje A mają krótkie, proste zdania. Wersje B są dla tych, którzy chcą iść dalej.</p>
+    </details>
+    <details>
+      <summary>Czy to tylko dla kierowców ciężarówek?</summary>
+      <p>Historie dzieją się w pracy kierowcy ciężarówki. Ale rozmowy na bramie, w magazynie, u klienta, z dyspozytorem, z policją i w biurze firmy przydadzą się każdemu przewoźnikowi – także w busie i w dostawczaku.</p>
+    </details>
+    <details>
+      <summary>W jakiej formie dostanę materiał?</summary>
+      <p>Jako plik PDF. Możesz go czytać na telefonie, tablecie i komputerze albo wydrukować.</p>
+    </details>
+    <details>
+      <summary>Jaki niemiecki jest w dialogach?</summary>
+      <p>Zwykły, standardowy niemiecki, którego używa się w pracy. W tematach z Austrii jest kilka lokalnych słów, np. „Grüß Gott” – zawsze z wyjaśnieniem.</p>
+    </details>
+    <details>
+      <summary>Czym różni się pakiet podstawowy od pełnego?</summary>
+      <p>Podstawowy to część „Bonusy na start”: gramatyka, okoliczniki, 50 pytań i odpowiedzi, zdania na rozmowę o pracę. Pełny ma to wszystko i do tego 52 dialogi w 13 tematach ze słowniczkami.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===================== OSTATNIE WEZWANIE ===================== -->
+<section class="final" data-scroll>
+  <div class="final-sign slide-up">
+    <span class="exit-no" aria-hidden="true">
+      <svg viewBox="0 0 40 40"><path d="M8 32L30 10M30 10H14M30 10v16" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+    <div>
+      <h2>Następny zjazd: niemiecki bez stresu</h2>
+      <p>Pakiet pełny z dialogami: <s>299 zł</s> <b>150 zł</b></p>
+    </div>
+    <button class="btn btn-yellow btn-big" type="button" data-add="full">Biorę to</button>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Niemiecki dla przewoźników</p>
+  <p class="footer-links"><a href="#" data-link="regulamin">Regulamin</a><a href="#" data-link="prywatnosc">Polityka prywatności</a><a href="#" data-link="kontakt">Kontakt</a></p>
+</footer>
+
+<!-- Pasek z ceną na telefonie -->
+<div class="sticky-buy" data-sticky-buy aria-hidden="true">
+  <span><s>299 zł</s> <b>150 zł</b></span>
+  <button class="btn btn-yellow" type="button" data-add="full" tabindex="-1">Biorę to</button>
+</div>
+
+<!-- Koszyk -->
+<div class="cart-scrim" data-cart-scrim hidden></div>
+<aside class="cart" data-cart aria-label="Koszyk" aria-hidden="true">
+  <div class="cart-head">
+    <h2>Twój koszyk</h2>
+    <button class="cart-close" type="button" data-close-cart aria-label="Zamknij koszyk">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" data-cart-body></div>
+  <div class="cart-foot" data-cart-foot></div>
+</aside>
+
+<!-- Podgląd strony -->
+<div class="lightbox" data-lightbox hidden>
+  <button class="lightbox-close" type="button" data-lightbox-close aria-label="Zamknij podgląd">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>
+  <img alt="Powiększona strona z pliku PDF" data-lightbox-img>
+</div>
+
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
