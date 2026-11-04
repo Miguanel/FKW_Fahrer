@@ -132,37 +132,15 @@ function buildDialog() {
   }));
 }
 
+// Dwie tabele: problemy bez PDF-a i rozwiązania z PDF-em (wiersze obok siebie)
 function buildBeforeAfter() {
   const box = $("[data-ba]");
-  box.innerHTML = PROBLEMS.map(([bad, good]) => `
-    <li class="prism">
-      <button class="prism-box" type="button" aria-label="Obróć tablicę">
-        <span class="prism-face face-before"><span class="tag">Bez PDF-a</span><span>${bad}</span></span>
-        <span class="prism-face face-after"><span class="tag">Z PDF-em</span><span>${good}</span></span>
-      </button>
-    </li>`).join("");
-  // Dotknięcie odwraca tablicę wbrew przewijaniu
-  box.addEventListener("click", (e) => {
-    const b = e.target.closest(".prism-box");
-    if (!b) return;
-    b.classList.add("manual");
-    b.dataset.flip = b.dataset.flip === "1" ? "0" : "1";
-    updatePrisms();
-  });
-}
-
-// Tablice obracają się jedna po drugiej, gdy sekcja przejeżdża przez ekran
-function updatePrisms() {
-  const box = $("[data-ba]");
-  if (!box) return;
-  const vh = window.innerHeight;
-  $$(".prism-box", box).forEach((b) => {
-    const r = b.getBoundingClientRect();
-    // obrót, gdy tablica przejeżdża z połowy ekranu w górę (od 50% do 30% wysokości)
-    let f = reduceMotion ? 1 : clamp((vh * .5 - r.top) / (vh * .2));
-    if (b.dataset.flip === "1") f = 1 - Math.round(f);
-    b.style.setProperty("--f", f.toFixed(3));
-  });
+  const n = PROBLEMS.length;
+  const col = (cls, title, i) => `
+    <div class="ba-cell ba-th ${cls}" style="--c:${i}">${title}</div>
+    ${PROBLEMS.map((row, r) => `<div class="ba-cell ${cls}${r === n - 1 ? " last" : ""}" style="--c:${i};--r:${r}">${row[i]}</div>`).join("")}`;
+  box.style.setProperty("--rows", n + 1);
+  box.innerHTML = col("bad", "Bez PDF-a", 0) + col("good", "Z PDF-em", 1);
 }
 
 /* =========================================================
@@ -197,8 +175,6 @@ function update() {
     el.style.setProperty("--e", e.toFixed(4));
     el.style.setProperty("--p", p.toFixed(4));
   }
-
-  updatePrisms();
 
   // Ciężarówka na pasku górnym
   const max = document.documentElement.scrollHeight - vh;
