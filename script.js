@@ -420,6 +420,130 @@ function setupVehicles() {
     '<span class="cab-top" aria-hidden="true"><span class="windshield"></span><span class="mirror l"></span><span class="mirror r"></span></span>'));
 }
 
+/* =========================================================
+   Ruch uliczny bez końca
+   Nowe auta pojawiają się tuż poza ekranem, a znikają,
+   kiedy są dalej niż 25% wysokości ekranu nad nim albo pod nim
+   (obszar 150% ekranu), więc na pewno ich nie widać.
+   ========================================================= */
+function setupTraffic() {
+  if (reduceMotion) return;
+  const roads = $$(".lanes.has-traffic");
+  if (!roads.length) return;
+  const wide = window.matchMedia("(min-width: 1000px)");
+  const COLORS = ["#D52B1E", "#F7F8F6", "#5B6470", "#00539F", "#F5B700", "#1F2328", "#8DB2D3", "#2E7D32"];
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  // Pasy ruchu: x liczony od lewej krawędzi jezdni; dir -1 = w górę (do przodu), +1 = w dół (my wyprzedzamy)
+  const lanesFor = (w) => wide.matches
+    ? [
+        { x: 60, dir: -1, speed: [110, 190], kind: "car" },
+        { x: w - 60, dir: 1, speed: [40, 90], kind: "car" },
+        { x: w / 2, dir: -1, speed: [140, 220], kind: "moto", rare: true },
+      ]
+    : [
+        { x: 11, dir: -1, speed: [120, 200], kind: "moto" },
+        { x: w - 11, dir: 1, speed: [40, 80], kind: "moto", rare: true },
+      ];
+
+  const state = roads.map((road) => {
+    const layer = document.createElement("div");
+    layer.className = "traffic";
+    layer.setAttribute("aria-hidden", "true");
+    road.appendChild(layer);
+    return { road, layer, cars: [], visible: false, last: {} };
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      const s = state.find((x) => x.road === en.target);
+      if (s) s.visible = en.isIntersecting;
+    });
+    if (state.some((s) => s.visible)) start();
+  }, { rootMargin: "25% 0px" });
+  state.forEach((s) => io.observe(s.road));
+
+  function makeCar(kind) {
+    const el = document.createElement("div");
+    let w, h;
+    if (kind === "moto") {
+      w = 14; h = 38; el.className = "tcar moto";
+    } else if (Math.random() < .22) {
+      w = 46; h = 128; el.className = "tcar van";
+    } else {
+      w = 44; h = 84; el.className = "tcar";
+    }
+    el.style.setProperty("--c", pick(COLORS));
+    el.innerHTML = kind === "moto" ? "<i></i>" : "<i class='tw'></i><i class='tr'></i>";
+    return { el, w, h };
+  }
+
+  function spawn(s, lane, li, y) {
+    const c = makeCar(lane.kind);
+    const car = { ...c, lane: li, x: lane.x - c.w / 2, y, v: lane.dir * rnd(lane.speed[0], lane.speed[1]) };
+    car.el.style.transform = `translate3d(${car.x}px, ${y}px, 0)`;
+    s.layer.appendChild(car.el);
+    s.cars.push(car);
+  }
+
+  const free = (s, li, y, h) => s.cars.every((c) => c.lane !== li || y + h + 60 < c.y || y > c.y + c.h + 60);
+
+  let raf = 0, prev = 0;
+  function start() { if (!raf) { prev = performance.now(); raf = requestAnimationFrame(tick); } }
+
+  function tick(now) {
+    const dt = Math.min(.05, (now - prev) / 1000);
+    prev = now;
+    const vh = window.innerHeight;
+    let any = false;
+
+    for (const s of state) {
+      if (!s.visible) {
+        if (s.cars.length) { s.cars.forEach((c) => c.el.remove()); s.cars = []; }
+        continue;
+      }
+      any = true;
+      const r = s.road.getBoundingClientRect();
+      const W = r.width, H = r.height;
+      const viewTop = -r.top, viewBot = viewTop + vh;
+      const zoneTop = viewTop - vh * .25, zoneBot = viewBot + vh * .25;
+      const lanes = lanesFor(W);
+
+      // ruch i sprzątanie
+      s.cars = s.cars.filter((c) => {
+        c.y += c.v * dt;
+        const lane = lanes[c.lane];
+        if (!lane || c.y + c.h < Math.max(0, zoneTop) || c.y > Math.min(H, zoneBot) || c.y < -c.h || c.y > H) {
+          c.el.remove();
+          return false;
+        }
+        c.x = lane.x - c.w / 2;
+        c.el.style.transform = `translate3d(${c.x}px, ${c.y}px, 0)`;
+        return true;
+      });
+
+      // nowe auta tuż poza ekranem, po stronie, z której nadjeżdżają
+      lanes.forEach((lane, li) => {
+        const inLane = s.cars.filter((c) => c.lane === li).length;
+        const target = Math.max(1, Math.round((zoneBot - zoneTop) / (lane.rare ? 900 : 380)));
+        const key = li;
+        if (inLane >= target || now - (s.last[key] || 0) < rnd(500, 1400)) return;
+        const probe = lane.kind === "moto" ? 38 : 128;
+        let y = lane.dir < 0 ? viewBot + rnd(10, vh * .2) : viewTop - probe - rnd(10, vh * .2);
+        // pierwsze auta od razu na ekranie, żeby ruch był widać od początku
+        if (inLane === 0 && !s.last[key]) y = rnd(viewTop, viewBot - probe);
+        y = Math.max(0, Math.min(H - probe, y));
+        if (!free(s, li, y, probe)) return;
+        spawn(s, lane, li, y);
+        s.last[key] = now;
+      });
+    }
+    raf = any ? requestAnimationFrame(tick) : 0;
+  }
+  wide.addEventListener("change", () => state.forEach((s) => { s.cars.forEach((c) => c.el.remove()); s.cars = []; s.last = {}; }));
+}
+
 function setupLinks() {
   $$("[data-link]").forEach((a) => { if (CONFIG.links[a.dataset.link]) a.href = CONFIG.links[a.dataset.link]; });
 }
@@ -454,6 +578,7 @@ setupCart();
 setupLinks();
 setupCookies();
 setupVehicles();
+setupTraffic();
 heroMouse();
 counters();
 update();
