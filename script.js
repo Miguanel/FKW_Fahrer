@@ -29,9 +29,8 @@ const CONFIG = {
 
   // Linki w stopce
   links: {
-    regulamin: "#",
-    prywatnosc: "#",
-    kontakt: "mailto:",
+    regulamin: "https://adamwala.pl/regulamin-sklepu-internetowego/",
+    prywatnosc: "https://adamwala.pl/polityka-prywatnosci/",
   },
 };
 
@@ -39,19 +38,19 @@ const CONFIG = {
    Treści sekcji
    ========================================================= */
 const TOPICS = [
-  ["Rozmowa kwalifikacyjna", "Das Vorstellungsgespräch", "Jak powiedzieć, kim jesteś i gdzie wcześniej pracowałeś. Jak powiedzieć, jakie masz prawo jazdy i dokumenty. Jak zapytać o pieniądze, godziny pracy i mieszkanie."],
-  ["Załadunek w magazynie u dystrybutora", "Die Beladung im Zentrallager", "Co powiedzieć przy bramie magazynu. Jak zapytać, ile jest palet. Jak powiedzieć, że czegoś brakuje albo coś jest zepsute. Dlaczego nie wolno podpisać papierów, jeśli coś się nie zgadza."],
-  ["Dostawa i rozładunek u klienta", "Die Lieferung beim Kunden", "Co powiedzieć, kiedy przywozisz towar. Jak zapytać, gdzie postawić palety. Jak poprosić o podpis i pieczątkę. Jak powiedzieć przez telefon, że się spóźnisz."],
-  ["Najczęstsze pytania do kierowcy i odpowiedzi", "Die häufigsten Fragen an den Fahrer", "Jakie pytania usłyszysz w pracy najczęściej i jak krótko na nie odpowiedzieć. Jak grzecznie powiedzieć „nie”, kiedy czegoś nie wolno ci zrobić. Co powiedzieć, kiedy nie rozumiesz pytania."],
-  ["Uszkodzony towar albo zła liczba palet", "Beschädigte Ware oder falsche Palettenanzahl", "Co powiedzieć, kiedy towar jest zepsuty albo potłuczony. Jak poprosić, żeby szkodę wpisać na papierach. Co zrobić, kiedy klient źle policzy palety."],
-  ["Rozmowy kierowcy przez telefon", "Telefongespräche des Fahrers", "Jak zacząć i skończyć rozmowę przez telefon. Jak poprosić, żeby ktoś przeliterował nazwę. Jak zostawić wiadomość. Co powiedzieć, kiedy źle słychać."],
-  ["Pierwszy dzień w pracy", "Der erste Arbeitstag", "Jak przywitać się w nowej pracy. Co dostajesz pierwszego dnia i jak to się nazywa po niemiecku. Jak sprawdzić ciężarówkę przed jazdą. O co zapytać szefa: choroba, awaria, wypadek, diety."],
-  ["W trasie: nawigacja, korek, objazd", "Unterwegs: Navi, Stau, Umleitung", "Co to jest korytarz życia i jak go zrobić. Jak wyglądają znaki objazdu. Jak zapytać o drogę i zrozumieć odpowiedź: prosto, w lewo, w prawo, rondo, światła, zawrócić."],
-  ["Przerwa na parkingu: jedzenie, prysznic, nocleg", "Pause auf dem Rastplatz und Autohof", "Jak zamówić jedzenie i zapłacić. Jak zapytać o cenę parkingu, prysznic i rachunek dla firmy. Jak rozmawiać z kierowcą z innego kraju."],
-  ["Koniec miesiąca: wypłata, diety i urlop", "Monatsende: Lohnabrechnung, Spesen und Urlaub", "Co znaczą słowa na pasku wypłaty: brutto, netto, podatek, ubezpieczenia, diety, nadgodziny. Jak grzecznie powiedzieć, że coś się nie zgadza. Jak poprosić o urlop."],
-  ["Klient nie przyjmuje towaru", "Der Kunde nimmt die Ware nicht an", "Jak spokojnie rozmawiać, kiedy klient nie chce towaru. Co musi być napisane na dokumencie dostawy. Kiedy podpisać, a kiedy dopisać swoją uwagę."],
-  ["Wypadek na autostradzie", "Unfall auf der Autobahn", "Co robić zaraz po wypadku. Jak zadzwonić na policję (110) i po karetkę (112) i co powiedzieć. Jak rozmawiać z policjantem. Dlaczego nie podpisywać papierów, z którymi się nie zgadzasz."],
-  ["Wypadek przy rozładunku", "Unfall beim Entladen", "Jak bezpiecznie rozładowywać windą załadowczą. Co zrobić, kiedy ktoś się zrani w pracy: pierwsza pomoc, telefon do firmy, zeszyt pierwszej pomocy. Jak spokojnie mówić o tym, co się stało."],
+  ["Rozmowa kwalifikacyjna", "Das Vorstellungsgespräch", "Jak powiedzieć, kim jesteś i gdzie wcześniej pracowałeś. Jak powiedzieć, jakie masz prawo jazdy i dokumenty. Jak zapytać o pieniądze, godziny pracy i mieszkanie.", "Forma „Sie” i czas Perfekt", "Mówisz grzecznie formą „Sie” i opowiadasz o swoim doświadczeniu w czasie przeszłym."],
+  ["Załadunek w magazynie u dystrybutora", "Die Beladung im Zentrallager", "Co powiedzieć przy bramie magazynu. Jak zapytać, ile jest palet. Jak powiedzieć, że czegoś brakuje albo coś jest zepsute. Dlaczego nie wolno podpisać papierów, jeśli coś się nie zgadza.", "Liczby i kolejność zdarzeń", "Pewnie podajesz liczby palet i opowiadasz po kolei: zuerst, dann, danach."],
+  ["Dostawa i rozładunek u klienta", "Die Lieferung beim Kunden", "Co powiedzieć, kiedy przywozisz towar. Jak zapytać, gdzie postawić palety. Jak poprosić o podpis i pieczątkę. Jak powiedzieć przez telefon, że się spóźnisz.", "Zdania z „weil” i „dass”", "Tłumaczysz „dlaczego” i wiesz, gdzie w takim zdaniu stoi czasownik – na końcu."],
+  ["Najczęstsze pytania do kierowcy i odpowiedzi", "Die häufigsten Fragen an den Fahrer", "Jakie pytania usłyszysz w pracy najczęściej i jak krótko na nie odpowiedzieć. Jak grzecznie powiedzieć „nie”, kiedy czegoś nie wolno ci zrobić. Co powiedzieć, kiedy nie rozumiesz pytania.", "Pytania i krótkie odpowiedzi", "Rozpoznajesz pytania na W (wer, was, wo, wann) i odpowiadasz krótko, bez tłumaczenia w głowie."],
+  ["Uszkodzony towar albo zła liczba palet", "Beschädigte Ware oder falsche Palettenanzahl", "Co powiedzieć, kiedy towar jest zepsuty albo potłuczony. Jak poprosić, żeby szkodę wpisać na papierach. Co zrobić, kiedy klient źle policzy palety.", "Słowa o szkodach", "Nazywasz szkodę dokładnie: co, ile i gdzie. Mówisz same fakty, bez zgadywania słów."],
+  ["Rozmowy kierowcy przez telefon", "Telefongespräche des Fahrers", "Jak zacząć i skończyć rozmowę przez telefon. Jak poprosić, żeby ktoś przeliterował nazwę. Jak zostawić wiadomość. Co powiedzieć, kiedy źle słychać.", "Literowanie i zwroty przez telefon", "Literujesz po niemiecku, rozumiesz liczby przez telefon i znasz zwroty: anrufen, zurückrufen, verbinden."],
+  ["Pierwszy dzień w pracy", "Der erste Arbeitstag", "Jak przywitać się w nowej pracy. Co dostajesz pierwszego dnia i jak to się nazywa po niemiecku. Jak sprawdzić ciężarówkę przed jazdą. O co zapytać szefa: choroba, awaria, wypadek, diety.", "Słowa o ciężarówce i dokumentach", "Znasz nazwy rzeczy, które dostajesz pierwszego dnia, i umiesz o nie grzecznie zapytać."],
+  ["W trasie: nawigacja, korek, objazd", "Unterwegs: Navi, Stau, Umleitung", "Co to jest korytarz życia i jak go zrobić. Jak wyglądają znaki objazdu. Jak zapytać o drogę i zrozumieć odpowiedź: prosto, w lewo, w prawo, rondo, światła, zawrócić.", "Kierunki i opis drogi", "Rozumiesz wskazówki: geradeaus, links, rechts, Kreisverkehr – i umiesz je powtórzyć."],
+  ["Przerwa na parkingu: jedzenie, prysznic, nocleg", "Pause auf dem Rastplatz und Autohof", "Jak zamówić jedzenie i zapłacić. Jak zapytać o cenę parkingu, prysznic i rachunek dla firmy. Jak rozmawiać z kierowcą z innego kraju.", "Zamawianie, ceny, rachunek", "Zamawiasz, pytasz o cenę i rachunek. Dajesz krótkie rady w formie polecenia: Prüf…, Nimm…"],
+  ["Koniec miesiąca: wypłata, diety i urlop", "Monatsende: Lohnabrechnung, Spesen und Urlaub", "Co znaczą słowa na pasku wypłaty: brutto, netto, podatek, ubezpieczenia, diety, nadgodziny. Jak grzecznie powiedzieć, że coś się nie zgadza. Jak poprosić o urlop.", "Daty i słowa z paska wypłaty", "Rozumiesz Brutto, Netto, Steuer, Spesen. Podajesz datę i powód, kiedy coś się nie zgadza."],
+  ["Klient nie przyjmuje towaru", "Der Kunde nimmt die Ware nicht an", "Jak spokojnie rozmawiać, kiedy klient nie chce towaru. Co musi być napisane na dokumencie dostawy. Kiedy podpisać, a kiedy dopisać swoją uwagę.", "Spokojny sprzeciw", "Mówisz „nie zgadzam się” spokojnie i umiesz dopisać swoją uwagę na dokumencie."],
+  ["Wypadek na autostradzie", "Unfall auf der Autobahn", "Co robić zaraz po wypadku. Jak zadzwonić na policję (110) i po karetkę (112) i co powiedzieć. Jak rozmawiać z policjantem. Dlaczego nie podpisywać papierów, z którymi się nie zgadzasz.", "Zgłoszenie alarmowe", "Podajesz po kolei: gdzie, co się stało, ilu jest rannych. Opisujesz wypadek w czasie przeszłym."],
+  ["Wypadek przy rozładunku", "Unfall beim Entladen", "Jak bezpiecznie rozładowywać windą załadowczą. Co zrobić, kiedy ktoś się zrani w pracy: pierwsza pomoc, telefon do firmy, zeszyt pierwszej pomocy. Jak spokojnie mówić o tym, co się stało.", "Pierwsza pomoc i ciało", "Nazywasz obrażenia i części ciała, umiesz przyznać się do błędu i opisać, co się stało."],
 ];
 
 // Fragment z Tematu 3, wersja A (czas teraźniejszy)
@@ -93,14 +92,17 @@ const zl = (n) => `${n} zł`;
 function buildTopics() {
   const list = $("[data-topics]");
   const chev = '<svg class="topic-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  list.innerHTML = TOPICS.map(([pl, de, learn], i) => `
-    <li class="topic" style="--t:${i}">
+  list.innerHTML = TOPICS.map(([pl, de, learn, chip, gain], i) => `
+    <li class="topic vehicle van" data-vehicle style="--t:${i};--d:${(i % 2) * .1}">
       <button class="topic-btn" type="button" aria-expanded="false" aria-controls="tm-${i}">
         <span class="topic-no">${i + 1}</span>
-        <span class="topic-titles"><span class="topic-pl">${pl}</span><span class="topic-de" lang="de">${de}</span></span>
+        <span class="topic-titles"><span class="topic-pl">${pl}</span><span class="topic-de" lang="de">${de}</span><span class="topic-chip">Niemiecki: ${chip}</span></span>
         ${chev}
       </button>
-      <div class="topic-more" id="tm-${i}"><div><p><b>Czego się nauczysz:</b> ${learn}</p></div></div>
+      <div class="topic-more" id="tm-${i}"><div>
+        <p><b>Czego się nauczysz:</b> ${learn}</p>
+        <p class="gain"><b>Zyskujesz w niemieckim:</b> ${gain}</p>
+      </div></div>
     </li>`).join("");
   list.addEventListener("click", (e) => {
     const btn = e.target.closest(".topic-btn");
@@ -419,7 +421,27 @@ function setupVehicles() {
 }
 
 function setupLinks() {
-  $$("[data-link]").forEach((a) => { a.href = CONFIG.links[a.dataset.link] || "#"; });
+  $$("[data-link]").forEach((a) => { if (CONFIG.links[a.dataset.link]) a.href = CONFIG.links[a.dataset.link]; });
+}
+
+// Okno „Ustawienia cookies”
+function setupCookies() {
+  const box = $("[data-cookies]");
+  let opener;
+  const close = () => { box.hidden = true; opener && opener.focus(); };
+  $("[data-cookies-open]").addEventListener("click", (e) => {
+    opener = e.currentTarget;
+    box.hidden = false;
+    $("[data-cookies-close]").focus();
+  });
+  $("[data-cookies-close]").addEventListener("click", close);
+  $("[data-cookies-clear]").addEventListener("click", () => {
+    try { localStorage.removeItem(CART_KEY); } catch (_) {}
+    cart = null; renderCart(); close();
+    toast("Dane strony wyczyszczone");
+  });
+  box.addEventListener("click", (e) => { if (e.target === box) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !box.hidden) close(); });
 }
 
 document.documentElement.classList.add("js");
@@ -430,6 +452,7 @@ setupVideo();
 setupLightbox();
 setupCart();
 setupLinks();
+setupCookies();
 setupVehicles();
 heroMouse();
 counters();
