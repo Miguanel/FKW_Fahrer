@@ -410,6 +410,14 @@ function setupCart() {
 /* =========================================================
    Start
    ========================================================= */
+// Karty jako ciężarówki widziane z góry: światła, koła, kabina
+function setupVehicles() {
+  $$("[data-vehicle]").forEach((el) => el.insertAdjacentHTML("beforeend",
+    '<span class="lights" aria-hidden="true"></span>' +
+    '<span class="tires l" aria-hidden="true"></span><span class="tires r" aria-hidden="true"></span>' +
+    '<span class="cab-top" aria-hidden="true"><span class="windshield"></span><span class="mirror l"></span><span class="mirror r"></span></span>'));
+}
+
 function setupLinks() {
   $$("[data-link]").forEach((a) => { a.href = CONFIG.links[a.dataset.link] || "#"; });
 }
@@ -422,6 +430,7 @@ setupVideo();
 setupLightbox();
 setupCart();
 setupLinks();
+setupVehicles();
 heroMouse();
 counters();
 update();

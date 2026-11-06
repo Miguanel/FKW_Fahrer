@@ -682,3 +682,99 @@ button { font: inherit; cursor: pointer; }
 .f-d .bars li::before { background: #fff; }
 .f-d .bars b { color: var(--ink); }
 .gloss-note { margin-top: 14px; font-weight: 600; color: var(--blue) !important; }
+
+/* =========================================================
+   Autostrada z góry: sekcje to jezdnia, karty to ciężarówki w korku.
+   Treść jest na dachu naczepy, kabina jedzie w dół strony.
+   ========================================================= */
+.highway { background: #4E7A57; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 14px 14px; }
+.get.highway { padding-top: 70px; }
+.get.highway .get-intro { background: transparent; padding: 0; }
+.get.highway .get-intro h2, .bonus.highway h2 { color: #fff; }
+.features.highway { padding-top: 0; }
+
+.lanes {
+  position: relative; padding: 80px 40px 40px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.8) 0 46px, transparent 46px 110px) 50% calc(var(--p, 0) * 1400px) / 6px 110px repeat-y,
+    linear-gradient(90deg, #AEB6BE 0 7px, #F7F8F6 7px 12px, transparent 12px calc(100% - 12px), #F7F8F6 calc(100% - 12px) calc(100% - 7px), #AEB6BE calc(100% - 7px)),
+    var(--asphalt);
+}
+.feature-grid.lanes, .bonus-grid.lanes { grid-template-columns: 1fr 1fr; column-gap: 90px; row-gap: 0; perspective: none; }
+.feature-grid.lanes > .feature { grid-column: auto; }
+.bonus-grid.lanes { margin-top: 36px; }
+
+/* Ciężarówka z góry */
+.vehicle {
+  --cab: var(--blue);
+  --k: clamp(0, calc(var(--e) * 1.5 - var(--d, 0)), 1);
+  position: relative; overflow: visible; align-self: start;
+  margin: 0 0 120px; border: 0; border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(0,0,0,.18), 0 18px 30px rgba(0,0,0,.35);
+  transform: translate3d(0, calc((1 - var(--k)) * 90px), 0); opacity: var(--k);
+}
+.feature-grid .feature.vehicle { transform: translate3d(0, calc((1 - var(--k)) * 90px), 0); opacity: var(--k); }
+/* korek: drugi pas stoi trochę dalej */
+.lanes > .vehicle:nth-child(even) { margin-top: 110px; }
+
+.cab-top {
+  position: absolute; left: 50%; top: calc(100% + 10px); width: 88%; height: 74px; transform: translateX(-50%);
+  background: var(--cab); border-radius: 8px 8px 22px 22px;
+  box-shadow: 0 12px 20px rgba(0,0,0,.35), inset 0 18px 0 rgba(255,255,255,.18);
+}
+.cab-top::before { /* sprzęg */
+  content: ""; position: absolute; left: 50%; top: -12px; width: 26px; height: 12px; margin-left: -13px; background: #1B1E22; border-radius: 3px;
+}
+.windshield {
+  position: absolute; left: 8%; right: 8%; bottom: 8px; height: 20px; border-radius: 4px 4px 14px 14px;
+  background: linear-gradient(180deg, #2E3B48, #7FA3C2);
+}
+.mirror { position: absolute; bottom: 18px; width: 12px; height: 9px; background: #1B1E22; border-radius: 3px; }
+.mirror.l { left: -12px; } .mirror.r { right: -12px; }
+.tires { position: absolute; top: 22px; width: 7px; height: 28px; border-radius: 2px; background: #15181B; box-shadow: 0 36px 0 #15181B, 0 72px 0 #15181B; }
+.tires.l { left: -8px; } .tires.r { right: -8px; }
+.lights::before, .lights::after { /* światła stopu z tyłu naczepy */
+  content: ""; position: absolute; top: -5px; width: 30px; height: 7px; border-radius: 3px;
+  background: #FF3B30; box-shadow: 0 0 14px 4px rgba(255, 50, 40, .55);
+}
+.lights::before { left: 16px; } .lights::after { right: 16px; }
+
+/* Barwy firmowe kabin */
+.f-a.vehicle { --cab: var(--blue); --d: 0; }
+.f-b.vehicle { --cab: var(--yellow); --d: .12; }
+.f-c.vehicle { --cab: var(--red); --d: 0; }
+.f-d.vehicle { --cab: var(--blue); --d: .12; }
+.bonus-tile.vehicle:nth-child(1) { --cab: var(--red); }
+.bonus-tile.vehicle:nth-child(2) { --cab: #5B6470; }
+.bonus-tile.vehicle:nth-child(3) { --cab: var(--yellow); }
+.bonus-tile.vehicle:nth-child(4) { --cab: var(--blue); }
+.bonus-tile.vehicle::before { border-radius: 6px 6px 0 0; }
+.f-b.vehicle .windshield, .bonus-tile:nth-child(3) .windshield { background: linear-gradient(180deg, #3A3F46, #8DA9C2); }
+
+@media (max-width: 900px) {
+  .feature-grid.lanes, .bonus-grid.lanes { grid-template-columns: 1fr; }
+  .lanes > .vehicle:nth-child(even) { margin-top: 0; }
+}
+@media (max-width: 700px) {
+  .lanes { padding: 50px 22px 20px; margin-left: -18px; margin-right: -18px;
+    background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,.75) 0 40px, transparent 40px 96px) 9px calc(var(--p, 0) * 1400px) / 4px 96px repeat-y,
+      repeating-linear-gradient(180deg, rgba(255,255,255,.75) 0 40px, transparent 40px 96px) calc(100% - 9px) calc(var(--p, 0) * 1400px) / 4px 96px repeat-y,
+      var(--asphalt); }
+  .vehicle { margin-bottom: 100px; }
+  .cab-top { height: 60px; }
+  .windshield { height: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vehicle, .feature-grid .feature.vehicle { transform: none; opacity: 1; }
+}
+
+/* Działy rad „Zapamiętaj” z korzyściami */
+.tips { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.tips li { --k: clamp(0, calc(var(--e) * 1.6 - .3), 1); background: #fff; border-radius: 10px; padding: 10px 14px 12px; }
+.tip-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-weight: 700; color: var(--ink); line-height: 1.25; }
+.tip-top b { font-family: var(--f-display); font-size: 1.35rem; color: var(--blue); }
+.tip-bar { height: 6px; margin: 6px 0 7px; border-radius: 3px; background: #EEF1F4; position: relative; overflow: hidden; }
+.tip-bar::before { content: ""; position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--yellow); width: calc(var(--v) / var(--max) * 100% * var(--k)); }
+.f-d .tips p { color: var(--muted); font-size: .95rem; line-height: 1.4; }
+.tips p::before { content: "✓ "; color: #2E7D32; font-weight: 800; }
