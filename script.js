@@ -544,6 +544,57 @@ function setupTraffic() {
   wide.addEventListener("change", () => state.forEach((s) => { s.cars.forEach((c) => c.el.remove()); s.cars = []; s.last = {}; }));
 }
 
+/* =========================================================
+   Generator mostów: przy każdym wejściu na stronę każdy most
+   jest inny (materiał, szerokość, skos, pasy, latarnie, auta).
+   ========================================================= */
+const BRIDGE_TYPES = [
+  { name: "beton",      deck: "#AEB6BE", deck2: "#98A1AA", rail: "posts",  railColor: "#5B6470" },
+  { name: "stal",       deck: "#7C8C9C", deck2: "#5E6E7E", rail: "truss",  railColor: "#2F5E8C" },
+  { name: "zielona",    deck: "#8F9A93", deck2: "#7A867F", rail: "truss",  railColor: "#3F6B52" },
+  { name: "rdza",       deck: "#9A8F86", deck2: "#857A71", rail: "truss",  railColor: "#8A4B2E" },
+  { name: "kamień",     deck: "#B9A88F", deck2: "#A3927A", rail: "stone",  railColor: "#7D6A52" },
+  { name: "nowoczesny", deck: "#D9DEE3", deck2: "#C5CCD3", rail: "glass",  railColor: "#8DB2D3" },
+];
+function setupBridges() {
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const CAR_COLORS = ["#D52B1E", "#F7F8F6", "#00539F", "#F5B700", "#1F2328", "#2E7D32", "#5B6470"];
+  let last = null;
+  $$(".bridge").forEach((br) => {
+    let t = pick(BRIDGE_TYPES);
+    if (last && t.name === last.name) t = pick(BRIDGE_TYPES.filter((x) => x.name !== last.name));
+    last = t;
+    const deckH = Math.round(rnd(96, 150));
+    const lanes = Math.random() < .55 ? 2 : 1;
+    const sidewalk = Math.random() < .5;
+    const lamps = Math.random() < .6 ? Math.round(rnd(110, 220)) : 0;
+    const skew = (Math.random() < .5 ? -1 : 1) * rnd(0, 4.5);
+    br.dataset.bridge = t.name;
+    br.style.setProperty("--deck", t.deck);
+    br.style.setProperty("--deck2", t.deck2);
+    br.style.setProperty("--rail", t.railColor);
+    br.style.setProperty("--deck-h", deckH + "px");
+    br.style.setProperty("--skew", skew.toFixed(2) + "deg");
+    br.style.setProperty("--lamp-gap", lamps ? lamps + "px" : "0px");
+
+    const cars = [];
+    const n = Math.round(rnd(1, lanes === 2 ? 4 : 2));
+    for (let i = 0; i < n; i++) {
+      const dir = lanes === 2 ? (i % 2 ? -1 : 1) : (Math.random() < .5 ? -1 : 1);
+      const dur = rnd(7, 15).toFixed(1);
+      const delay = (-rnd(0, 15)).toFixed(1);
+      const lane = lanes === 2 ? (dir === 1 ? "a" : "b") : "a";
+      cars.push(`<span class="bcar lane-${lane} ${dir === 1 ? "to-r" : "to-l"}" style="--c:${pick(CAR_COLORS)};animation-duration:${dur}s;animation-delay:${delay}s"><i></i></span>`);
+    }
+    const deck = document.createElement("div");
+    deck.className = `deck rail-${t.rail} lanes-${lanes}${sidewalk ? " walk" : ""}${lamps ? " lamps" : ""}`;
+    deck.setAttribute("aria-hidden", "true");
+    deck.innerHTML = `<div class="deck-road">${cars.join("")}</div>`;
+    br.prepend(deck);
+  });
+}
+
 function setupLinks() {
   $$("[data-link]").forEach((a) => { if (CONFIG.links[a.dataset.link]) a.href = CONFIG.links[a.dataset.link]; });
 }
@@ -578,6 +629,7 @@ setupCart();
 setupLinks();
 setupCookies();
 setupVehicles();
+setupBridges();
 setupTraffic();
 heroMouse();
 counters();
